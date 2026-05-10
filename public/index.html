@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ImmoYield</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <nav class="topbar">
+        <span class="logo" aria-label="ImmoYield logo">
+          <span class="logo-mark" aria-hidden="true">
+            <span class="logo-roof"></span>
+            <span class="logo-bars"></span>
+          </span>
+          <span class="logo-text">ImmoYield</span>
+        </span>
+        <span class="topbar-note">Premium Yield Intelligence</span>
+      </nav>
+      <header class="hero">
+        <p class="brand">Smart Investment Search</p>
+        <h1>ImmoYield</h1>
+        <p class="subtitle">
+          Find high-performing real estate deals with rental comps within 50 km, ranked by estimated gross yield.
+          Outliers are removed automatically (only 1% to 50% yield kept).
+        </p>
+      </header>
+
+      <section class="panel">
+        <h2 class="panel-title">Search</h2>
+        <form id="search-form" class="controls">
+        <label>
+          City
+          <input id="city" name="city" value="Detroit" required />
+        </label>
+        <label>
+          State code
+          <input id="state_code" name="state_code" value="MI" maxlength="2" required />
+        </label>
+        <button type="submit">Load yields</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2 class="panel-title">Refine Results</h2>
+        <form id="filter-form" class="controls filter-controls">
+        <label>
+          Min yield %
+          <input id="min_yield" name="min_yield" type="number" step="0.1" min="1" max="50" value="1" />
+        </label>
+        <label>
+          Max sale price
+          <input id="max_price" name="max_price" type="number" step="1000" min="0" placeholder="No limit" />
+        </label>
+        <label>
+          Rows per page
+          <input id="page_size" name="page_size" type="number" min="1" max="100" value="10" />
+        </label>
+        <button type="submit">Apply filters</button>
+        <button type="button" id="export_csv" class="button-secondary">Export CSV</button>
+        </form>
+      </section>
+
+      <p id="status" class="status card-soft"></p>
+      <section id="results" class="results"></section>
+      <div class="pager">
+        <button type="button" id="prev_page">Previous</button>
+        <span id="page_info">Page 1 / 1</span>
+        <button type="button" id="next_page">Next</button>
+      </div>
+    </main>
+
+    <script src="/main.js" defer></script>
+  </body>
+</html>
